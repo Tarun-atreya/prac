@@ -23,6 +23,35 @@ fn part1() -> Vec<Vec<i32>> {
     return array2d; 
 }
 
+fn method2(array2d: &Vec<Vec<i32>>) -> i32 {
+    for i in 0..array2d.len(){
+        for j in 1..array2d[i].len() - 1 {
+            if array2d[i][j - 1] + array2d[i][j + 1] > 17 && array2d[i][j] % 2 == 0 {
+                return array2d[i][j];
+            }
+        }
+    }
+
+    return -1; 
+}
+
+fn method1(array2d: &Vec<Vec<i32>>) -> i32 {
+    for c in array2d {
+        for num in c {
+            if num % 2 == 0 {
+                return *num; 
+            }
+        }
+    }
+
+    return -1; 
+}
+
+fn part2(array2d: Vec<Vec<i32>>) {
+    println!("Method 1: {}", method1(&array2d));
+}   
+
 fn main() {
     let array2d = part1();
+    part2(array2d);
 }
